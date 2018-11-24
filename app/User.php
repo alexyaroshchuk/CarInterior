@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *
@@ -27,4 +27,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles()
+    {
+        return $this->BelongsTo(Role::class);
+    }
+
+    public function authorizeRoles($roles)
+    {
+       return true;
+    }
+
+    public function hasAnyRole($roles)
+    {
+        return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
+
+
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
 }
