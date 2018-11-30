@@ -80,16 +80,23 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a>
-                    </li>
-                    <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a>
-                    </li>
-                    <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a>
-                    </li>
-                    <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a>
-                    </li>
-                    <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a>
-                    </li>
+                    @if(App\Role::isAdmin())
+                        <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
+                        <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a></li>
+                        <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a></li>
+                        <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a></li>
+                        <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a></li>
+                    @endif
+                    @if(App\Role::isManager())
+                        <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
+                        <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a></li>
+                        <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a></li>
+                        <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a></li>
+                        <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a></li>
+                    @endif
+                    @if(App\Role::isClient())
+                        <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
+                    @endif
                     <li>
                         <a href="/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <i class="fa fa-power-off"></i>
@@ -110,12 +117,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="logo-area">
-                    <a href="#"><h2>Car</h2></a>
-                    <div class="row justify-content-between">
-                        <button type="button" class="btn btn-warning add-new" data-toggle="modal" data-target="#myModal" title="Create"><i class="fa fa-plus" ></i> Add New</button>
+                @if(!App\Role::isClient() && !App\Role::isManager())
+                    <div class="logo-area">
+                        <a href="#"><h2>Car</h2></a>
+                        <div class="row justify-content-between">
+                            <button type="button" class="btn btn-warning add-new" data-toggle="modal" data-target="#myModal" title="Create"><i class="fa fa-plus" ></i> Add New</button>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             </div>
@@ -181,6 +190,7 @@
                                     <td>{{ $c->model }}</td>
                                     <td>{{ $c->provider['0']->full_name_of_provider }}</td>
                                     <td>{{ $c->year_of_issue }}</td>
+                                    @if(!App\Role::isClient())
                                     <td>
                                         <div class="row sweetalert justify-content-center">
                                             <div>
@@ -198,6 +208,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
