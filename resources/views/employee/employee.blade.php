@@ -52,13 +52,11 @@
                         <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a></li>
                         <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a></li>
                     @endif
-                    @if(App\Role::isManager())
-                        <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
-                        <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a></li>
-                        <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a></li>
-                        <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a></li>
-                        <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a></li>
-                    @endif
+                        @if(App\Role::isManager())
+                            <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
+                            <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a></li>
+                            <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a></li>
+                        @endif
                     @if(App\Role::isClient())
                         <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
                     @endif

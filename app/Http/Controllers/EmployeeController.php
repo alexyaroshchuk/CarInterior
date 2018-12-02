@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -30,6 +31,14 @@ class EmployeeController extends Controller
     }
 
     public function insert(Request $request){
+        $a='@gmail.com';
+        $b=request('fullname');
+        User::insert([
+            'name' => $request['fullname'],
+            'email' => $b.=$a,
+            'password' => bcrypt('2'),
+            'id_role' => 3
+        ]);
         Employee::create([
             'date_birth' => $request['date_birth'],
             'fullname' => $request['fullname'],

@@ -19,27 +19,11 @@ class UserTableSeeder extends Seeder
 
         $admin = new User();
         $admin->name = 'Admin Name';
-        $admin->email = 'admin@example.com';
-        $admin->password = bcrypt('secret');
+        $admin->email = 'admin@admin.com';
+        $admin->password = bcrypt('admin');
         $admin->id_role = 1;
         $admin->save();
         $admin->roles()->associate($role_admin);
-
-        $manager = new User();
-        $manager->name = 'Manager Name';
-        $manager->email = 'manager@example.com';
-        $manager->password = bcrypt('secret');
-        $manager->id_role = 2;
-        $manager->save();
-        $manager->roles()->associate($role_manager);
-
-        $client = new User();
-        $client->name = 'Client1 Name';
-        $client->email = 'client1@example.com';
-        $client->password = bcrypt('1');
-        $client->id_role = 3;
-        $client->save();
-        $client->roles()->associate($role_client);
 
         DB::table('users')->insert([
             'name' => 'Александр Костыркин',
@@ -91,7 +75,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => '	Елена Строгова',
+            'name' => 'Елена Строгова',
             'email' => 'Елена Строгова@gmail.com',
             'password' => bcrypt('1'),
             'id_role' => 3,
@@ -126,5 +110,64 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('1'),
             'id_role' => 3,
         ]);
+
+        ///////////////////////////////
+
+        DB::table('users')->insert([
+            'name' => 'Константин Есипович',
+            'email' => 'Константин Есипович@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Елизавета Андреева',
+            'email' => 'Елизавета Андреева@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Василий Белый',
+            'email' => 'Василий Белый@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Евгений Ступко',
+            'email' => 'Евгений Ступко@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Богдан Сидоров',
+            'email' => 'Богдан Сидоров@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Алексей Кукишев',
+            'email' => 'Алексей Кукишев@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Артем Лиска',
+            'email' => 'Артем Лиска@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Римма Лукачинская',
+            'email' => 'Римма Лукачинская@gmail.com',
+            'password' => bcrypt('employee'),
+            'id_role' => 2,
+        ]);
+
     }
 }

@@ -91,8 +91,6 @@
                         <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
                         <li><a href="/client"><i class="notika-icon notika-mail"></i> Client</a></li>
                         <li><a href="/contracts"><i class="notika-icon notika-edit"></i> Contracts</a></li>
-                        <li><a href="/employee"><i class="notika-icon notika-edit"></i> Employee</a></li>
-                        <li><a href="/provider"><i class="notika-icon notika-bar-chart"></i> Provider</a></li>
                     @endif
                     @if(App\Role::isClient())
                         <li><a href="/car"><i class="notika-icon notika-house"></i> Car</a></li>
@@ -117,7 +115,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                @if(!App\Role::isClient() && !App\Role::isManager())
+                @if(!App\Role::isClient())
                     <div class="logo-area">
                         <a href="#"><h2>Car</h2></a>
                         <div class="row justify-content-between">

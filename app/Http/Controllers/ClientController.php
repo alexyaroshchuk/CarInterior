@@ -22,14 +22,6 @@ class ClientController extends Controller
 
     public function update(Request $request)
     {
-        $a='@gmail.com';
-        $b=request('fullname');
-        User::insert([
-            'name' => $request['fullname'],
-            'email' => $b.=$a,
-            'password' => bcrypt('1'),
-            'id_role' => 3
-        ]);
         Client::where('client_id', $request['client'])->update([
             'driving_experience' => $request['driving_experience'],
             'fullname' => $request['fullname'],
@@ -38,6 +30,14 @@ class ClientController extends Controller
     }
 
     public function insert(Request $request){
+        $a='@gmail.com';
+        $b=request('fullname');
+        User::insert([
+            'name' => $request['fullname'],
+            'email' => $b.=$a,
+            'password' => bcrypt('1'),
+            'id_role' => 3
+        ]);
         Client::create([
             'driving_experience' => $request['driving_experience'],
             'fullname' => $request['fullname'],
