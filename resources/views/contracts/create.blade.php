@@ -49,10 +49,10 @@
                                 <label class="control-label">End date</label>
                                 <input type="date" class="form-control form-control-line" name="end_of_contract" required>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label class="control-label">Price</label>
-                                <input type="text" class="form-control form-control-line" name="price" required>
-                            </div>
+                            {{--<div class="form-group col-md-12">--}}
+                                {{--<label class="control-label">Price</label>--}}
+                                {{--<input type="text" class="form-control form-control-line" name="price" required>--}}
+                            {{--</div>--}}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
